@@ -1,0 +1,29 @@
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: 'vim install (Debian)'
+    apt: name=vim update_cache=yes
+    become: yes
+    become_method: sudo
+    when: ansible_os_family == "Debian"
+  - name: 'vim install (RedHat)'
+    yum: name=vim update_cache=yes
+    become: yes
+    become_method: sudo
+    when: ansible_os_family == "RedHat"
+
+  - name: 'git install (debian)'
+    apt: name=git update_cache=yes
+    become: yes
+    become_method: sudo
+    when: ansible_os_family == "Debian"
+  - name: 'git install (RedHat)'
+    apt: name=git update_cache=yes
+    become: yes
+    become_method: sudo
+    when: ansible_os_family == "RedHat"
+
+  - file: path={{ ansible_env.HOME }}/.vim state=directory mode=0700
+  - template: src=templates/vimrc dest={{ ansible_env.HOME }}/.vimrc
+  - file: path={{ ansible_env.HOME }}/.vim/bundle/vundle state=directory mode=0700
+  - git: repo=https://github.com/gmarik/vundle.git dest={{ ansible_env.HOME }}/.vim/bundle/vundle
