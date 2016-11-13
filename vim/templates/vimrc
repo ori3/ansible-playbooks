@@ -44,7 +44,8 @@ nnoremap dd "_dd
     :tabnew .
 :endfunction
 
-nnoremap <C-T> :call TabNew()<CR>
+"nnoremap <C-T> :call TabNew()<CR>
+nnoremap <F4> :call TabNew()<CR>
 "
 " クリップボードとyankを共通化 macだと効かないようだ
 set clipboard+=unnamed
@@ -81,7 +82,7 @@ let g:netrw_alto = 1
 map <C-i> :Gtags -f %<CR>
 map <C-j> :GtagsCursor<CR>
 nmap <F3> :GtagsCursor<CR>
-map <F4> :wincmd gF<CR>
+"map <F4> :wincmd gF<CR>
 
 
 set nocompatible
