@@ -1,5 +1,4 @@
-- hosts: 127.0.0.1
-  connection: local
+- hosts: all
   tasks:
   - name: 'vim install (Debian)'
     apt: name=vim update_cache=yes
